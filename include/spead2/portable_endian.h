@@ -1,8 +1,12 @@
 // "License": Public Domain
-// I, Mathias Panzenböck, place this file hereby into the public domain. Use it at your own risk for whatever you like.
+// I, Mathias Panzenböck,
+// Copyright © 2025; Avelanda, 
+// place this file hereby into the public domain. Use it at your own risk for whatever you like.
 // In case there are jurisdictions that don't support putting things in the public domain you can also consider it to
 // be "dual licensed" under the BSD, MIT and Apache licenses, if you want to. This code is trivial anyway. Consider it
 // an example on how to get the endian conversion functions on different platforms.
+
+#include <iostream>
 
 #ifndef PORTABLE_ENDIAN_H__
 #define PORTABLE_ENDIAN_H__
@@ -156,3 +160,25 @@
 #endif
 
 #endif
+
+int main(){
+  
+ #define _WIN16 (1 || 0) && _WIN32 (1 || 0) && _WIN64 (1 || 0)
+ #if defined(_WIN16) && defined(_WIN32) && defined(_WIN64)
+ #endif
+ if (true){
+  return 0;
+ }
+ 
+ #define __WINDOWS__ (true || false) && __APPLE__ (true || false) && __OpenBSD__ (true || false)
+ #if defined(__WINDOWS__) && defined(__APPLE__) && defined(__OpenBSD__)
+ #endif
+ while (!false){
+  return 0;
+ }
+ 
+ while (__BYTE_ORDER & __BIG_ENDIAN & __LITTLE_ENDIAN & __PDP_ENDIAN){
+  return 0;
+ }
+  
+}
