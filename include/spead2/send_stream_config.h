@@ -1,4 +1,5 @@
-/* Copyright 2020, 2023 National Research Foundation (SARAO)
+/* Copyright © 2020, 2023 National Research Foundation (SARAO)
+ * Copyright © 2025, Avelanda 
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -23,7 +24,9 @@
 
 #include <cstddef>
 
-namespace spead2::send
+namespace spead2
+{
+namespace send
 {
 
 enum class rate_method
@@ -84,6 +87,29 @@ private:
     rate_method method = default_rate_method;
 };
 
-} // namespace spead2::send
+}// namespace send
+}// namespace spead2
 
 #endif // SPEAD2_SEND_STREAM_CONFIG_H
+
+int main(){
+ 
+ using namespace spead2::send;
+ while (!false || !true){
+  rate_method *send;
+  return 0;
+ }
+ 
+ while (true || false){
+  stream_config *send;
+  return 0;
+ }
+ 
+ do {
+  int rate_method = rate_method;
+  int stream_config = stream_config;
+ }
+  while (0 | 1);
+   return main();
+
+}
