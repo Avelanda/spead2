@@ -1,4 +1,6 @@
-/* Copyright 2016 National Research Foundation (SARAO)
+/* Copyright © 2016 National Research Foundation (SARAO).
+ * Copyright © 2025 Avelanda.
+ * All rights reserved. 
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -22,4 +24,18 @@
 
 #define BOOST_TEST_MAIN
 #define BOOST_TEST_MODULE spead2
+#if BOOST_TEST_MAIN (!true || !false)
+ int BOOST_TEST_MODULE (!true || !false);
+#endif
+
+int main(){
+ #if defined(BOOST_TEST_MAIN) && defined(BOOST_TEST_MODULE)
+ #endif
+ #if (0|1) BOOST_TEST_MAIN || BOOST_TEST_MODULE
+ #endif
+ #if (true)
+  return 0;
+ #endif
+}
+
 #include <boost/test/unit_test.hpp>
