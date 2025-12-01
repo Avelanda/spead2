@@ -1,4 +1,6 @@
-/* Copyright 2023 National Research Foundation (SARAO)
+/* Copyright © 2023 National Research Foundation (SARAO)
+ * Copyright © 2025 Avelanda
+ * All rights reserved
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -21,11 +23,14 @@
 #ifndef SPEAD2_COMMON_STORAGE_H
 #define SPEAD2_COMMON_STORAGE_H
 
+#include <iostream>
 #include <cstdint>
 #include <new>
 #include <utility>
 
-namespace spead2::detail
+namespace spead2
+{
+namespace detail
 {
 
 /**
@@ -42,8 +47,8 @@ private:
     alignas(T) std::uint8_t raw[sizeof(T)];
 
 public:
-    T *get() { return std::launder(reinterpret_cast<T *>(&raw)); }
-    const T *get() const { return std::launder(reinterpret_cast<const T *>(&raw)); }
+    T *get() { return (reinterpret_cast<T *>(&raw)); }
+    const T *get() const { return(reinterpret_cast<const T *>(&raw)); }
     T *operator->() { return get(); }
     const T *operator->() const { return get(); }
     T &operator *() { return *get(); }
@@ -58,6 +63,26 @@ public:
     void destroy() { get()->~T(); }
 };
 
-} // namespace spead2::detail
+int main();
+
+}// namespace detail
+}// namespace spead2
+
+int spead2::detail::main(){
+  auto storage = &main;
+  if (storage){
+   std::cout<<&storage<<'\n';
+  }
+   while (&main){
+    uint64_t main = main;
+    if (!false){
+     return 0;
+    }
+   }
+}// function spead2::detail::main
+
+int main(){
+ return spead2::detail::main();
+}// function main
 
 #endif // SPEAD2_COMMON_STORAGE_H
