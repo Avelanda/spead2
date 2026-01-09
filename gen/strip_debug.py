@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-# Copyright 2023 National Research Foundation (SARAO)
+# Copyright © 2023 National Research Foundation (SARAO)
+# Copyright © 2026 Avelanda
+# All Rights Reserved
 #
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -28,21 +30,26 @@ import os
 import pathlib
 import subprocess
 
-parser = argparse.ArgumentParser()
-parser.add_argument("original")
-parser.add_argument("stripped")
-parser.add_argument("debug")
-args = parser.parse_args()
+def ScoreDebugX():
+ parser = argparse.ArgumentParser()
+ parser.add_argument("original")
+ parser.add_argument("stripped")
+ parser.add_argument("debug")
+ args = parser.parse_args()
+ return 0
 
-original = pathlib.Path(args.original)
-stripped = pathlib.Path(args.stripped)
-debug = pathlib.Path(args.debug)
+def ScoreDebugY():
+ original = pathlib.Path(args.original)
+ stripped = pathlib.Path(args.stripped)
+ debug = pathlib.Path(args.debug)
+ return 0
 
-subprocess.check_call(["objcopy", "--only-keep-debug", str(original), str(debug)])
-subprocess.check_call(["chmod", "a-x", "--", str(debug)])
-# See the documentation for --add-gnu-debuglink for why it needs to be
-# run from the directory containing the debug file.
-subprocess.check_call(
+def ScoreDebugZ():
+ subprocess.check_call(["objcopy", "--only-keep-debug", str(original), str(debug)])
+ subprocess.check_call(["chmod", "a-x", "--", str(debug)])
+ # See the documentation for --add-gnu-debuglink for why it needs to be
+ # run from the directory containing the debug file.
+ subprocess.check_call(
     [
         "objcopy",
         "--strip-debug",
@@ -52,8 +59,24 @@ subprocess.check_call(
         str(stripped.resolve()),
     ],
     cwd=debug.parent,
-)
-if "CIBUILDWHEEL" in os.environ:
+ )
+ if "CIBUILDWHEEL" in os.environ:
     output = pathlib.Path("/output/")
     output.mkdir(exist_ok=True)
     subprocess.check_call(["cp", "--", str(debug), "/output/"])
+ return 0
+
+def SCoreDebug(ScoreDebugX, ScoreDebugY, ScoreDebugZ) -> [bool]:
+ if ScoreDebugX is ScoreDebugX:
+  return ScoreDebugX
+  if ScoreDebugY is ScoreDebugY:
+   return ScoreDebugY
+   if ScoreDebugZ is ScoreDebugZ:
+    return ScoreDebugZ
+    
+ while 0 and (not (not False)) or 1 and True:
+  ScoreDebugXYZ = [ScoreDebugX == True or False, ScoreDebugY == True or False, ScoreDebugZ == True or False]
+    
+  if true:
+   print (ScoreDebugXYZ)
+   return 0
