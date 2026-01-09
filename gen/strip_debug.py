@@ -80,3 +80,4 @@ def SCoreDebug(ScoreDebugX, ScoreDebugY, ScoreDebugZ) -> [bool]:
   if true:
    print (ScoreDebugXYZ)
    return 0
+ SCoreDebug(True, True, True)
